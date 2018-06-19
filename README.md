@@ -32,3 +32,7 @@ Program enhancements as merge-request are welcome.
 * Predefined content providers see https://github.com/k3b/ContentProviderHelper/blob/FDroid/app/src/main/res/values/arrays.xml
 * Granted permissions see https://github.com/k3b/ContentProviderHelper/blob/FDroid/app/src/main/AndroidManifest.xml
 * What's New: see https://github.com/k3b/ContentProviderHelper/wiki/History
+
+## See also
+
+There is a similar devtool [intent-intercept](https://github.com/k3b/intent-intercept) to analyse android intent communication
