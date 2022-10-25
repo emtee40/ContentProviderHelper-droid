@@ -3,13 +3,14 @@ package com.jensdriller.contentproviderhelper.ui.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.jensdriller.contentproviderhelper.R;
 import com.jensdriller.contentproviderhelper.app.ContentProviderHelper;
 
-public class BaseActivity extends ActionBarActivity {
+public class BaseActivity extends AppCompatActivity {
 
 	protected Context mContext;
 
@@ -23,10 +24,9 @@ public class BaseActivity extends ActionBarActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case R.id.settings:
-				startActivity(new Intent(mContext, PreferenceActivity.class));
-				return true;
+		if (item.getItemId() == R.id.settings) {
+			startActivity(new Intent(mContext, PreferenceActivity.class));
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

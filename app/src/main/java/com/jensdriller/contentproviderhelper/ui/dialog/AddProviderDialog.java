@@ -28,7 +28,7 @@ public class AddProviderDialog extends ContractDialogFragment<AddProviderDialog.
 	private EditText mTxtUri;
 	private ProgressDialogFragment<Uri, Void, List<String>> mSearchDialog;
 
-	private SimpleListener<Void, List<String>> mDialogListener = new SimpleListener<Void, List<String>>() {
+	private final SimpleListener<Void, List<String>> mDialogListener = new SimpleListener<Void, List<String>>() {
 
 		@Override
 		public void onPostExecute(List<String> result) {

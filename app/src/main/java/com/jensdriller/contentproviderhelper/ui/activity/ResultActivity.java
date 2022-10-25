@@ -3,8 +3,6 @@ package com.jensdriller.contentproviderhelper.ui.activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.view.MenuItemCompat;
-import android.support.v7.widget.ShareActionProvider;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +10,9 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.widget.ShareActionProvider;
+import androidx.core.view.MenuItemCompat;
 
 import com.jensdriller.contentproviderhelper.R;
 import com.jensdriller.contentproviderhelper.model.ColumnList;
@@ -153,10 +154,9 @@ public class ResultActivity extends BaseActivity implements ExceptionListener {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case android.R.id.home:
-				onBackPressed();
-				return true;
+		if (item.getItemId() == android.R.id.home) {
+			onBackPressed();
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

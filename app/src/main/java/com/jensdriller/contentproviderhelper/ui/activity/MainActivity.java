@@ -60,7 +60,6 @@ public class MainActivity extends BaseActivity implements OnClickListener, OnIte
 
 	private Spinner mSpinnerUris;
 	private ArrayAdapter<String> mAdapterUris;
-	private ListView mListView;
 	private ColumnsAdapter mAdapterColumns;
 	private ColumnData mColumnData;
 	private boolean mShowColumnTypes;
@@ -146,9 +145,9 @@ public class MainActivity extends BaseActivity implements OnClickListener, OnIte
 		mColumnData = new ColumnData();
 		mAdapterColumns = new ColumnsAdapter(mContext, R.layout.column_list_item);
 
-		mListView = (ListView) findViewById(R.id.list_view_columns);
-		mListView.setOnItemClickListener(this);
-		mListView.setAdapter(mAdapterColumns);
+		ListView listView = (ListView) findViewById(R.id.list_view_columns);
+		listView.setOnItemClickListener(this);
+		listView.setAdapter(mAdapterColumns);
 
 		if (savedInstanceState == null) { // First load, kick off search for 1st spinner item
 
@@ -396,11 +395,11 @@ public class MainActivity extends BaseActivity implements OnClickListener, OnIte
 
 		// Re-enable buttons based on result
 		int rows = columnData.getRowCount();
-		mButtonQuery.setEnabled(rows == 0 ? false : true);
-		mButtonQueryWithFilter.setEnabled(rows == 0 ? false : true);
-		mButtonUncheckAll.setEnabled(size == 0 ? false : true);
-		mButtonCheckAll.setEnabled(size == 0 ? false : true);
-		mButtonTypes.setEnabled(size == 0 ? false : true);
+		mButtonQuery.setEnabled(rows != 0);
+		mButtonQueryWithFilter.setEnabled(rows != 0);
+		mButtonUncheckAll.setEnabled(size != 0);
+		mButtonCheckAll.setEnabled(size != 0);
+		mButtonTypes.setEnabled(size != 0);
 	}
 
 	@Override

@@ -8,7 +8,6 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
@@ -17,6 +16,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
+
+import androidx.fragment.app.DialogFragment;
 
 import com.jensdriller.contentproviderhelper.R;
 import com.jensdriller.contentproviderhelper.model.Column;

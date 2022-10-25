@@ -21,10 +21,6 @@ public class PreferenceActivity extends android.preference.PreferenceActivity im
 	protected void onCreate(Bundle savedInstanceState) {
 		setTheme(ContentProviderHelper.getUserTheme(this));
 		super.onCreate(savedInstanceState);
-/*
-		getSupportActionBar().setTitle(R.string.settings);
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-*/
 		addPreferencesFromResource(R.xml.preferences);
 
 		((Preference) findPreference(getString(R.string.preferences_key_build_version))).setSummary(getVersion());
@@ -39,10 +35,9 @@ public class PreferenceActivity extends android.preference.PreferenceActivity im
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case android.R.id.home:
-				onBackPressed();
-				return true;
+		if (item.getItemId() == android.R.id.home) {
+			onBackPressed();
+			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}

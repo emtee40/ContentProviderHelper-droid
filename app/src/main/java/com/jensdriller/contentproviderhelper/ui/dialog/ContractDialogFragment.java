@@ -1,7 +1,7 @@
 package com.jensdriller.contentproviderhelper.ui.dialog;
 
 import android.app.Activity;
-import android.support.v4.app.DialogFragment;
+import androidx.fragment.app.DialogFragment;
 
 /* Base fragment to ensure the parent activity implements a contract interface. */
 public abstract class ContractDialogFragment<T> extends DialogFragment {
