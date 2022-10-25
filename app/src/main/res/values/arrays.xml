@@ -62,8 +62,9 @@
         <item>content://mms-sms/search</item>
         <item>content://telephony/carriers</item>
         <item>content://user_dictionary/words</item>
-        <item>content://settings/system</item>
+        <item>content://settings/global</item>
         <item>content://settings/secure</item>
+        <item>content://settings/system</item>
     </string-array>
     <string-array name="themes">
         <item>@string/preferences_theme_light</item>

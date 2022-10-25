@@ -30,6 +30,7 @@ public class ResultActivity extends BaseActivity implements ExceptionListener {
 	public static final String INTENT_EXTRA_COLUMNS = "columns";
 	public static final String INTENT_EXTRA_URI = "uri";
 	public static final String INTENT_EXTRA_WHERE = "where";
+	public static final String INTENT_EXTRA_PARAMETER = "parameter";
 	public static final String INTENT_EXTRA_LIMIT = "limit";
 	public static final String INTENT_EXTRA_SORT_BY = "sortBy";
 
@@ -77,6 +78,7 @@ public class ResultActivity extends BaseActivity implements ExceptionListener {
 		txtContentProvider.setText(uri);
 
 		String where = intent.getStringExtra(INTENT_EXTRA_WHERE);
+		String parameter = intent.getStringExtra(INTENT_EXTRA_PARAMETER);
 		String sortBy = intent.getStringExtra(INTENT_EXTRA_SORT_BY);
 		String limit = intent.getStringExtra(INTENT_EXTRA_LIMIT);
 		if (sortBy != null) {
@@ -89,7 +91,7 @@ public class ResultActivity extends BaseActivity implements ExceptionListener {
 
 		if (savedInstanceState == null) { // First load, kick off loading task
 			ColumnList columns = intent.getParcelableExtra(INTENT_EXTRA_COLUMNS);
-			LoadResultsTask.SQLParams sqlParams = new LoadResultsTask.SQLParams(where, sortBy);
+			LoadResultsTask.SQLParams sqlParams = new LoadResultsTask.SQLParams(where, parameter, sortBy);
 			loadResults(uri, sqlParams, columns);
 		} else { // Restore previous instance state
 			Result result = savedInstanceState.getParcelable(BUNDLE_RESULT);

@@ -50,7 +50,8 @@ public class LoadResultsTask extends DialogAsyncTask<Uri, Void, Result> {
 			for (int i = 0; i < len; i++) {
 				projection[i] = mColumnList.get(i).getName();
 			}
-			cursor = mContext.getContentResolver().query(params[0], projection, mSqlParams.where, null, mSqlParams.sortBy);
+			cursor = mContext.getContentResolver().query(params[0], projection, mSqlParams.where,
+					mSqlParams.parameter == null ? null : new String[] {mSqlParams.parameter}, mSqlParams.sortBy);
 			if (cursor.moveToFirst()) {
 				fileWriter = new FileWriter(file);
 				fileWriter.append(HTML_HEADER);
@@ -101,10 +102,12 @@ public class LoadResultsTask extends DialogAsyncTask<Uri, Void, Result> {
 	public static class SQLParams {
 
 		private String where;
+		private String parameter;
 		private String sortBy;
 
-		public SQLParams(String where, String sortBy) {
+		public SQLParams(String where, String parameter, String sortBy) {
 			this.where = where;
+			this.parameter = parameter;
 			this.sortBy = sortBy;
 		}
 	}

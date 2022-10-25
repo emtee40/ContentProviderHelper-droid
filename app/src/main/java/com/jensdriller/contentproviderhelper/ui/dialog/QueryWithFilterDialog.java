@@ -78,10 +78,15 @@ public class QueryWithFilterDialog extends DialogFragment {
 						String whereValue = txtWhere.getText().toString();
 						if (!TextUtils.isEmpty(whereValue)) {
 							String whereOperator = spinnerWhereOperator.getSelectedItem().toString();
-							final String whereFilter = spinnerColumns.getSelectedItem().toString() + " " + whereOperator + " " + whereValue;
+							final String whereFilter = spinnerColumns.getSelectedItem().toString() + " " + whereOperator + " ?";
 							intent.putExtra(ResultActivity.INTENT_EXTRA_WHERE, whereFilter);
+							intent.putExtra(ResultActivity.INTENT_EXTRA_PARAMETER, whereValue);
+
 							debugSql.append("\n\tWHERE ")
-									.append(whereFilter);
+									.append(whereFilter)
+									.append("\n\tparameter ")
+									.append(whereValue);
+
 						}
 
 						String sortByColumn = spinnerSortByColumns.getSelectedItem().toString();
