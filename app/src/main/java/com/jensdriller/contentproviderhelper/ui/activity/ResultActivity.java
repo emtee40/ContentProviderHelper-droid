@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.ShareActionProvider;
+import androidx.core.content.FileProvider;
 import androidx.core.view.MenuItemCompat;
 
 import com.jensdriller.contentproviderhelper.R;
@@ -146,7 +147,7 @@ public class ResultActivity extends BaseActivity implements ExceptionListener {
 		Intent shareIntent = new Intent(Intent.ACTION_SEND);
 		shareIntent.setType(MIME_TYPE);
 
-		Uri uri = Uri.parse("content://" + getPackageName() + "/" + RESULTS_FILE_NAME);
+		Uri uri = FileProvider.getUriForFile(this, "de.k3b.ContentProviderHelper", mResult.getFile());
 		shareIntent.putExtra(Intent.EXTRA_STREAM, uri);
 
 		return shareIntent;

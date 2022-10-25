@@ -35,10 +35,17 @@ public class LoadResultsTask extends DialogAsyncTask<Uri, Void, Result> {
 		mSqlParams = sqlParams;
 	}
 
+	protected File getSharedDir() {
+		File sharedDir = new File(mContext.getFilesDir(), "shared");
+		sharedDir.mkdirs();
+		return sharedDir;
+	}
+
+
 	@Override
 	protected Result doInBackground(Uri... params) {
 		Result resultData = new Result();
-		File file = new File(mContext.getFilesDir(), ResultActivity.RESULTS_FILE_NAME);
+		File file = new File(getSharedDir(), ResultActivity.RESULTS_FILE_NAME);
 		resultData.setFile(file);
 		FileWriter fileWriter = null;
 		Cursor cursor = null;
